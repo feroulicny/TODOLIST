@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced ToDo List</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Gabarito:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+<body>
+    
+    <header>
+        <p id="header-quote">Keep pushing forward</p>
+    </header>
+
+    <main>
+        <section class="task-input-section">
+            <h2 id="form-title">Add New Task</h2>
+            <form id="task-form">
+                
+                <input type="hidden" id="task-id-to-edit" value="">
+
+                <div class="form-group">
+                    <label for="task-name">Task Name</label>
+                    <input type="text" id="task-name" placeholder="Enter task name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="task-description">Description</label>
+                    <textarea id="task-description" placeholder="Add details (optional)"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Due Date & Time</label> 
+                    
+                    <div class="time-input-group">
+                        <input type="date" id="due-date"> 
+                    </div>
+
+                    <div class="time-inputs time-group-time">
+                        
+                        <div class="time-input-group">
+                            <label for="due-hour" class="time-label">Hour</label> 
+                            <input type="text" id="due-hour" placeholder="HH" min="0" max="23" value="00" maxlength="2"> 
+                        </div>
+                        
+                        <div class="time-input-group">
+                            <label for="due-minute" class="time-label">Minute</label>
+                            <input type="text" id="due-minute" placeholder="MM" min="0" max="59" value="00" maxlength="2">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="task-category">Category</label>
+                    <select id="task-category" required>
+                        <option value="" disabled selected>Select Category</option>
+                        <option value="personal">Personal</option>
+                        <option value="work">Work</option>
+                        <option value="academics">Academics</option>
+                        <option value="health">Health</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="task-priority">Priority</label>
+                    <select id="task-priority" required>
+                        <option value="low" selected>Low</option>
+                        <option value="medium">Medium</option>
+                        <option value="high">High</option>
+                    </select>
+                </div>
+
+                <button type="submit" id="submit-button">Add Task</button>
+            </form>
+        </section>
+
+        <section class="task-list-section">
+            <h2>Current Tasks</h2>
+
+            <div class="controls-bar"> 
+                
+                <div class="filters">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="personal">Personal</button>
+                    <button class="filter-btn" data-filter="work">Work</button>
+                    <button class="filter-btn" data-filter="academics">Academics</button>
+                    <button class="filter-btn" data-filter="health">Health</button>
+                </div>
+                
+                <div class="sort-control">
+                    <label for="sort-tasks">Sort by:</label>
+                    <select id="sort-tasks">
+                        <option value="time">Time (Soonest first)</option>
+                        <option value="priority">Priority (High first)</option>
+                        <option value="default" selected>Default (Newest first)</option>
+                    </select>
+                </div>
+            </div>
+
+            <ul id="task-list">
+                </ul>
+            
+            <p id="empty-message">Your task list is empty. Add a new task!</p>
+
+        </section>
+    </main>
+    
+    <div id="delete-confirmation-modal" class="modal">
+        <div class="modal-content">
+            <p>Task completed. Do you want to remove it permanently?</p>
+            <div class="modal-buttons">
+                <button id="modal-cancel">Keep</button>
+                <button id="modal-confirm" data-task-id="">Remove</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2025 Made by Roman Ciling with the help of Gemini</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
